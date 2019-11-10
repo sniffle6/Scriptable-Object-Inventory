@@ -12,7 +12,9 @@ public class Player : MonoBehaviour
         var item = other.GetComponent<GroundItem>();
         if (item)
         {
-            inventory.AddItem(new Item(item.item), 1);
+            Item _item = new Item(item.item);
+            Debug.Log(_item.Id);
+            inventory.AddItem(_item, 1);
             Destroy(other.gameObject);
         }
     }
@@ -29,6 +31,6 @@ public class Player : MonoBehaviour
     }
     private void OnApplicationQuit()
     {
-       inventory.Container.Items.Clear();
+        inventory.Container.Items = new InventorySlot[28];
     }
 }
